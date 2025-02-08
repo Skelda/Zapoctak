@@ -23,6 +23,7 @@ def drawBubble(
     """
     Draw the partially sorted list after one step of the bubble sort.
     """
+    window.update_idletasks()
     width = window.winfo_width() // 2 - 25
     height = window.winfo_height() // 2 - 25
     canvas_bubble = tk.Canvas(window, width=width, height=height)

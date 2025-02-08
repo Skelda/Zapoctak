@@ -42,6 +42,7 @@ def drawSelection(
     """
     Draw the partially sorted list after one step of the selection sort.
     """
+    window.update_idletasks()
     width = window.winfo_width() // 2 - 25
     height = window.winfo_height() // 2 - 25
     canvas_selection = tk.Canvas(window, width=width, height=height)
