@@ -40,24 +40,28 @@ def drawSelection(
     number_of_swaps,
 ) -> None:
     """
-    Draw the partially sorted list after one step of the bubble sort.
+    Draw the partially sorted list after one step of the selection sort.
     """
-    canvas = tk.Canvas(window, width=500, height=400)
-    canvas.place(x=501, y=0)
+    width = window.winfo_width() // 2 - 25
+    height = window.winfo_height() // 2 - 25
+    canvas_selection = tk.Canvas(window, width=width, height=height)
+    canvas_selection.place(x=501, y=26)
     max_data = max(data)
-    tk.Label(canvas, text=f"Number of comparisons: {number_of_comparisons}").place(
-        x=0, y=0
+    tk.Label(
+        canvas_selection, text=f"Number of comparisons: {number_of_comparisons}"
+    ).place(x=0, y=0)
+    tk.Label(canvas_selection, text=f"Number of swaps:       {number_of_swaps}").place(
+        x=0, y=25
     )
-    tk.Label(canvas, text=f"Number of swaps:       {number_of_swaps}").place(x=0, y=25)
     for i, j in enumerate(data):
         if i == index:
-            drawRectangle(canvas, len(data), i, "green", max_data, j)
+            drawRectangle(canvas_selection, len(data), i, "green", max_data, j)
         elif i == minimum_index:
-            drawRectangle(canvas, len(data), i, "red", max_data, j)
+            drawRectangle(canvas_selection, len(data), i, "red", max_data, j)
         elif i == first_element_index:
-            drawRectangle(canvas, len(data), i, "purple", max_data, j)
+            drawRectangle(canvas_selection, len(data), i, "purple", max_data, j)
         else:
-            drawRectangle(canvas, len(data), i, "blue", max_data, j)
+            drawRectangle(canvas_selection, len(data), i, "blue", max_data, j)
 
     window.update()
     return selectionSortStep(

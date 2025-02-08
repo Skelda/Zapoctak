@@ -23,20 +23,24 @@ def drawBubble(
     """
     Draw the partially sorted list after one step of the bubble sort.
     """
-    canvas = tk.Canvas(window, width=500, height=400)
-    canvas.place(x=0, y=0)
+    width = window.winfo_width() // 2 - 25
+    height = window.winfo_height() // 2 - 25
+    canvas_bubble = tk.Canvas(window, width=width, height=height)
+    canvas_bubble.place(x=0, y=26)
     max_data = max(data)
-    tk.Label(canvas, text=f"Number of comparisons: {number_of_comparisons}").place(
-        x=0, y=0
+    tk.Label(
+        canvas_bubble, text=f"Number of comparisons: {number_of_comparisons}"
+    ).place(x=0, y=0)
+    tk.Label(canvas_bubble, text=f"Number of swaps:       {number_of_swaps}").place(
+        x=0, y=25
     )
-    tk.Label(canvas, text=f"Number of swaps:       {number_of_swaps}").place(x=0, y=25)
     for i, j in enumerate(data):
         if i == index:
-            drawRectangle(canvas, len(data), i, "green", max_data, j)
+            drawRectangle(canvas_bubble, len(data), i, "green", max_data, j)
         elif i == index + 1:
-            drawRectangle(canvas, len(data), i, "red", max_data, j)
+            drawRectangle(canvas_bubble, len(data), i, "red", max_data, j)
         else:
-            drawRectangle(canvas, len(data), i, "blue", max_data, j)
+            drawRectangle(canvas_bubble, len(data), i, "blue", max_data, j)
 
     window.update()
     return bubbleSortStep(data, index, number_of_comparisons, number_of_swaps)

@@ -1,8 +1,5 @@
-import tkinter as tk
 from Sorting_algorithms import *
-import random
 from copy import deepcopy
-import time
 import asyncio
 
 WIDTH = 1000
@@ -17,11 +14,12 @@ async def main(master, data):
     """
     Main function used to run all the functionality of the code.
     """
-    data = list(random.randint(1, 100) for i in range(25))
     await asyncio.gather(
         selection_loop(deepcopy(data), master), bubble_loop(deepcopy(data), master)
     )
-    master.mainloop()
+    await asyncio.sleep(0)  # Yield control to allow other tasks to run
+    for task in asyncio.all_tasks():
+        task.cancel()  # Cancel all running tasks
 
 
 async def bubble_loop(data, master):

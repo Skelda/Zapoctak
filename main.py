@@ -18,6 +18,7 @@ def initializeScreen():
     """
     master = tk.Tk()
     master.geometry(f"{WIDTH}x{HEIGHT}")
+    master.title("Sorting Algorithms")
 
     main()
 
@@ -36,6 +37,23 @@ def main():
         else:
             run_normal(master, deepcopy(data))
 
+    sorting_running = False
+
+    def stop_sorting():
+        nonlocal sorting_running
+        if sorting_running:
+            sorting_running = False
+            master.quit()
+
+    def start_sorting():
+        nonlocal sorting_running
+        if async_var.get():
+            sorting_running = True
+            run_async(master, deepcopy(data))
+        else:
+            sorting_running = True
+            run_normal(master, deepcopy(data))
+
     async_var = tk.BooleanVar()
     async_var.set(False)
 
@@ -47,6 +65,9 @@ def main():
 
     start_button = tk.Button(switch_frame, text="Start Sorting", command=start_sorting)
     start_button.pack(side=tk.LEFT)
+
+    stop_button = tk.Button(switch_frame, text="Stop Sorting", command=stop_sorting)
+    stop_button.pack(side=tk.LEFT)
     master.mainloop()
 
 

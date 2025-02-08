@@ -1,8 +1,5 @@
-import tkinter as tk
 from Sorting_algorithms import *
-import random
 from copy import deepcopy
-import time
 
 WIDTH = 1000
 HEIGHT = 800
@@ -14,7 +11,6 @@ def main(master, data):
     """
     selection_loop(deepcopy(data), master)
     bubble_loop(deepcopy(data), master)
-    master.mainloop()
 
 
 def bubble_loop(data, master):
