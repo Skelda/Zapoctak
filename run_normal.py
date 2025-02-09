@@ -1,5 +1,6 @@
 from Sorting_algorithms import *
 from copy import deepcopy
+import time
 
 WIDTH = 1000
 HEIGHT = 800
@@ -11,6 +12,7 @@ def main(master, data):
     """
     selection_loop(deepcopy(data), master)
     bubble_loop(deepcopy(data), master)
+    insertion_loop(deepcopy(data), master)
 
 
 def bubble_loop(data, master):
@@ -36,3 +38,14 @@ def selection_loop(data, master):
                 i,
                 number_of_swaps,
             )
+
+
+def insertion_loop(data, master):
+    number_of_comparisons = number_of_swaps = 0
+    for i in range(0, len(data) - 1):
+        for j in range(i, -1, -1):
+            number_of_comparisons, number_of_swaps, should_break = drawInsertion(
+                master, data, j, number_of_comparisons, number_of_swaps
+            )
+            if should_break:
+                break

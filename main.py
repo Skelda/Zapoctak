@@ -30,6 +30,7 @@ def main():
     data = list(random.randint(1, 100) for i in range(25))
     drawBubble(master, deepcopy(data), 0, 0, 0)
     drawSelection(master, deepcopy(data), 0, 0, 0, 0, 0)
+    drawInsertion(master, deepcopy(data), 0, 0, 0)
 
     def start_sorting():
         if async_var.get():
