@@ -23,6 +23,7 @@ def drawBubble(
     """
     Draw the partially sorted list after one step of the bubble sort.
     """
+    global width, height
     window.update_idletasks()
     width = window.winfo_width() // 2 - 25
     height = window.winfo_height() // 2 - 25
@@ -34,6 +35,9 @@ def drawBubble(
     ).place(x=0, y=0)
     tk.Label(canvas_bubble, text=f"Number of swaps:       {number_of_swaps}").place(
         x=0, y=25
+    )
+    tk.Label(canvas_bubble, text="Bubble sort", font=("Helvetica", 16)).place(
+        x=width // 2 - 50, y=0
     )
     for i, j in enumerate(data):
         if i == index:
@@ -48,8 +52,8 @@ def drawBubble(
 
 
 def drawRectangle(canvas, number_of_rects, position, color, max_data, cur_data):
-    rect_width = 500 // number_of_rects
-    height_scaling = 400 // max_data
+    rect_width = width // number_of_rects
+    height_scaling = height // max_data
     canvas.create_rectangle(
         (position) * rect_width,
         400 - height_scaling * cur_data,

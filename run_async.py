@@ -2,9 +2,6 @@ from Sorting_algorithms import *
 from copy import deepcopy
 import asyncio
 
-WIDTH = 1000
-HEIGHT = 800
-
 
 def startAsyncMain(master, data):
     asyncio.run(main(master, data))

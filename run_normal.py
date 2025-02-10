@@ -2,9 +2,6 @@ from Sorting_algorithms import *
 from copy import deepcopy
 import time
 
-WIDTH = 1000
-HEIGHT = 800
-
 
 def main(master, data):
     """

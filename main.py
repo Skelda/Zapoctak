@@ -5,6 +5,7 @@ from copy import deepcopy
 import time
 from run_normal import main as run_normal
 from run_async import startAsyncMain as run_async
+from time_actual_sorting import plot_sorting_times
 
 
 WIDTH = 1000
@@ -28,6 +29,7 @@ def main():
     Main function used to run all the functionality of the code.
     """
     data = list(random.randint(1, 100) for i in range(25))
+    # data = list(i for i in range(25))
     drawBubble(master, deepcopy(data), 0, 0, 0)
     drawSelection(master, deepcopy(data), 0, 0, 0, 0, 0)
     drawInsertion(master, deepcopy(data), 0, 0, 0)
@@ -49,6 +51,15 @@ def main():
 
     start_button = tk.Button(switch_frame, text="Start Sorting", command=start_sorting)
     start_button.pack(side=tk.LEFT)
+
+    def show_sorting_times():
+        plot_sorting_times(master)
+
+    times_button = tk.Button(
+        switch_frame, text="Show Sorting Times", command=show_sorting_times
+    )
+    times_button.pack(side=tk.LEFT)
+
     master.mainloop()
 
 

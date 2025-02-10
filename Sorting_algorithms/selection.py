@@ -21,11 +21,12 @@ def selectionSortStep(
         minimum_index = index
 
     if index == len(data) - 1:
-        data[first_element_index], data[minimum_index] = (
-            data[minimum_index],
-            data[first_element_index],
-        )
-        number_of_swaps += 1
+        if data[minimum_index] < data[first_element_index]:
+            data[first_element_index], data[minimum_index] = (
+                data[minimum_index],
+                data[first_element_index],
+            )
+            number_of_swaps += 1
         minimum_index = first_element_index + 1
     return number_of_comparisons, minimum_index, number_of_swaps
 
@@ -42,17 +43,21 @@ def drawSelection(
     """
     Draw the partially sorted list after one step of the selection sort.
     """
+    global width, height
     window.update_idletasks()
     width = window.winfo_width() // 2 - 25
     height = window.winfo_height() // 2 - 25
     canvas_selection = tk.Canvas(window, width=width, height=height)
-    canvas_selection.place(x=501, y=26)
+    canvas_selection.place(x=width + 1, y=26)
     max_data = max(data)
     tk.Label(
         canvas_selection, text=f"Number of comparisons: {number_of_comparisons}"
     ).place(x=0, y=0)
     tk.Label(canvas_selection, text=f"Number of swaps:       {number_of_swaps}").place(
         x=0, y=25
+    )
+    tk.Label(canvas_selection, text="Selection sort", font=("Helvetica", 16)).place(
+        x=width // 2 - 50, y=0
     )
     for i, j in enumerate(data):
         if i == index:
@@ -76,8 +81,8 @@ def drawSelection(
 
 
 def drawRectangle(canvas, number_of_rects, position, color, max_data, cur_data):
-    rect_width = 500 // number_of_rects
-    height_scaling = 400 // max_data
+    rect_width = width // number_of_rects
+    height_scaling = height // max_data
     canvas.create_rectangle(
         (position) * rect_width,
         400 - height_scaling * cur_data,
