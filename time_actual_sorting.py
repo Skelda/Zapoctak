@@ -1,7 +1,6 @@
 from copy import deepcopy
 import random
 import time
-import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 
@@ -48,6 +47,7 @@ def sorting_times():
     bubble_sort_times = []
     selection_sort_times = []
     insertion_sort_times = []
+    # Loop through different numbers of elements to sort
     for i in range(100, 1001, 25):
         # Generate random data
         data = [random.randint(0, 1000) for _ in range(i)]
@@ -90,15 +90,18 @@ def sorting_times():
 
 
 def plot_sorting_times(window):
-    sorting_times()
+    """
+    Function to plot the sorting times for different sorting algorithms.
+    """
+    sorting_times()  # Calculate the sorting times
     fig = plt.gcf()
     window.update_idletasks()
     width = window.winfo_width() // 2 - 25
     height = window.winfo_height() // 2 - 25
-    canvas_plot = FigureCanvasTkAgg(fig, window)
+    canvas_plot = FigureCanvasTkAgg(fig, window)  # Create a canvas to display the plot
     canvas_plot.draw()
     canvas_plot.get_tk_widget().place(
         x=width + 26, y=height + 26, width=width, height=height
     )
     window.update()
-    plt.clf()
+    plt.clf()  # Clear the plot for the next time it is drawn
