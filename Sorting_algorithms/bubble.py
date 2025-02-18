@@ -1,4 +1,5 @@
 import tkinter as tk
+from math import floor
 
 
 def bubbleSortStep(
@@ -101,12 +102,12 @@ def drawRectangle(
     Returns:
         None
     """
-    rect_width = width // number_of_rects  # Calculate the width of each rectangle
-    height_scaling = height // max_data  # Calculate the height scaling factor
+    rect_width = width / number_of_rects  # Calculate the width of each rectangle
+    height_scaling = height / max_data  # Calculate the height scaling factor
     canvas.create_rectangle(
-        (position) * rect_width,
-        400 - height_scaling * cur_data,
-        (position + 1) * rect_width,
-        400,
-        fill=color,
-    )  # Draw the rectangle
+        floor((position) * rect_width),  # x-coordinate of the top-left corner
+        floor(400 - height_scaling * cur_data),  # y-coordinate of the top-left corner
+        floor((position + 1) * rect_width),  # x-coordinate of the bottom-right corner
+        400,  # y-coordinate of the bottom-right corner
+        fill=color,  # fill color of the rectangle
+    )

@@ -1,4 +1,5 @@
 import tkinter as tk
+from math import floor
 
 
 def selectionSortStep(
@@ -142,15 +143,15 @@ def drawRectangle(
         max_data (int): The maximum value in the data list.
         cur_data (int): The current value of the element being drawn.
     """
-    rect_width = width // number_of_rects  # Calculate the width of each rectangle
+    rect_width = width / number_of_rects  # Calculate the width of each rectangle
 
-    height_scaling = height // max_data  # Calculate the height scaling factor
+    height_scaling = height / max_data  # Calculate the height scaling factor
 
     # Draw the rectangle on the canvas with the specified position, size, and color
     canvas.create_rectangle(
-        (position) * rect_width,  # x-coordinate of the top-left corner
-        400 - height_scaling * cur_data,  # y-coordinate of the top-left corner
-        (position + 1) * rect_width,  # x-coordinate of the bottom-right corner
+        floor((position) * rect_width),  # x-coordinate of the top-left corner
+        floor(400 - height_scaling * cur_data),  # y-coordinate of the top-left corner
+        floor((position + 1) * rect_width),  # x-coordinate of the bottom-right corner
         400,  # y-coordinate of the bottom-right corner
         fill=color,  # fill color of the rectangle
     )
