@@ -41,6 +41,20 @@ def main():
         """
         Function to start the sorting process based on the selected mode (normal or async).
         """
+        if data_file_var.get():
+            file_path = tk.filedialog.askopenfilename(
+                title="Select Data File",
+                filetypes=(("Text Files", "*.txt"), ("All Files", "*.*")),
+            )
+            if file_path:
+                with open(file_path, "r") as file:
+                    data = []
+                    for line in file.readlines():
+                        data.extend([int(num) for num in line.strip().split()])
+        else:
+            data = list(
+                random.randint(1, 100) for i in range(25)
+            )  # Generate random data for sorting
         if async_var.get():
             run_async(master, deepcopy(data))  # Run async sorting
         else:
@@ -48,6 +62,10 @@ def main():
 
     async_var = tk.BooleanVar()  # Variable to store the state of the async checkbox
     async_var.set(False)  # Default to normal sorting
+    data_file_var = (
+        tk.BooleanVar()
+    )  # Variable to store the state of the data file checkbox
+    data_file_var.set(False)
 
     switch_frame = tk.Frame(master)  # Frame to hold the control buttons
     switch_frame.pack()
@@ -56,6 +74,11 @@ def main():
         switch_frame, text="Run Async", variable=async_var
     )  # Checkbox to toggle async mode
     async_button.pack(side=tk.LEFT)
+
+    data_file_checkbox = tk.Checkbutton(
+        switch_frame, text="Data from file", variable=data_file_var
+    )  # Checkbox to toggle async mode
+    data_file_checkbox.pack(side=tk.LEFT)
 
     start_button = tk.Button(
         switch_frame, text="Start Sorting", command=start_sorting
