@@ -18,7 +18,7 @@ def initializeScreen():
     global master
     master = tk.Tk()  # Create the main window
     master.geometry(f"{WIDTH}x{HEIGHT}")  # Set window size
-    master.title("Sorting Algorithms")  # Set window title
+    master.title("AlgoVis")  # Set window title
 
     main()  # Call the main function
 
