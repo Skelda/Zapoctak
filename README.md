@@ -45,11 +45,11 @@ This project provides a visual representation of different sorting algorithms. I
 
 ## Code Structure
 
-- [main.py](http://_vscodecontentref_/0): The main script to run the application.
-- [Sorting_algorithms](http://_vscodecontentref_/1): Directory containing the sorting algorithm implementations and visualization functions.
-  - [bubble.py](http://_vscodecontentref_/2): Contains the Bubble Sort implementation and visualization.
-  - [selection.py](http://_vscodecontentref_/3): Contains the Selection Sort implementation and visualization.
-  - [insertion.py](http://_vscodecontentref_/4): Contains the Insertion Sort implementation and visualization.
-- [run_normal.py](http://_vscodecontentref_/5): Script to run the sorting visualizations synchronously.
-- [run_async.py](http://_vscodecontentref_/6): Script to run the sorting visualizations asynchronously.
-- [time_actual_sorting.py](http://_vscodecontentref_/7): Script to measure and plot the performance of the sorting algorithms.
+- [main.py](https://github.com/Skelda/Zapoctak/blob/main/main.py): The main script to run the application.
+- [Sorting_algorithms](https://github.com/Skelda/Zapoctak/tree/main/Sorting_algorithms): Directory containing the sorting algorithm implementations and visualization functions.
+  - [bubble.py](https://github.com/Skelda/Zapoctak/tree/main/Sorting_algorithms/buble.py): Contains the Bubble Sort implementation and visualization.
+  - [selection.py](https://github.com/Skelda/Zapoctak/tree/main/Sorting_algorithms/selection.py): Contains the Selection Sort implementation and visualization.
+  - [insertion.py](https://github.com/Skelda/Zapoctak/tree/main/Sorting_algorithms/insertion.py): Contains the Insertion Sort implementation and visualization.
+- [run_normal.py](https://github.com/Skelda/Zapoctak/blob/main/run_normal.py): Script to run the sorting visualizations synchronously.
+- [run_async.py](https://github.com/Skelda/Zapoctak/blob/main/run_async.py): Script to run the sorting visualizations asynchronously.
+- [time_actual_sorting.py](https://github.com/Skelda/Zapoctak/blob/main/time_actual_sorting.py): Script to measure and plot the performance of the sorting algorithms.
