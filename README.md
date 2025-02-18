@@ -30,7 +30,7 @@ This project provides a visual representation of different sorting algorithms. I
     ```
 2. Navigate to the project directory:
     ```sh
-    cd sorting-visualization
+    cd Zapoctak
     ```
 3. Install the required dependencies:
     ```sh
