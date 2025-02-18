@@ -26,7 +26,7 @@ This project provides a visual representation of different sorting algorithms. I
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Skelda/sorting-visualization.git
+    git clone https://github.com/Skelda/Zapoctak
     ```
 2. Navigate to the project directory:
     ```sh
