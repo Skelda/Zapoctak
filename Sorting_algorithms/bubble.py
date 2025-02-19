@@ -1,5 +1,5 @@
 import tkinter as tk
-from math import floor
+from Sorting_algorithms.drawRect import drawRectangle
 
 
 def bubbleSortStep(
@@ -44,12 +44,18 @@ def drawBubble(
         tuple: Updated number of comparisons, number of swaps.
     """
     global width, height
+
+    ret = bubbleSortStep(
+        data, index, number_of_comparisons, number_of_swaps
+    )  # Perform a bubble sort step
+
     window.update_idletasks()  # Update the window to get the latest dimensions
     width = window.winfo_width() // 2 - 25  # Calculate canvas width
     height = window.winfo_height() // 2 - 25  # Calculate canvas height
     canvas_bubble = tk.Canvas(window, width=width, height=height)  # Create a canvas
     canvas_bubble.place(x=0, y=26)  # Place the canvas in the window
     max_data = max(data)  # Get the maximum value in the data list
+    min_data = min(data)  # Get the minimum value in the data list
 
     # Display the number of comparisons and swaps
     tk.Label(
@@ -68,46 +74,32 @@ def drawBubble(
     for i, j in enumerate(data):
         if i == index:
             drawRectangle(
-                canvas_bubble, len(data), i, "green", max_data, j
+                canvas_bubble,
+                len(data),
+                i,
+                "green",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
             )  # Current element
         elif i == index + 1:
             drawRectangle(
-                canvas_bubble, len(data), i, "red", max_data, j
+                canvas_bubble, len(data), i, "red", max_data, min_data, j, width, height
             )  # Next element
         else:
             drawRectangle(
-                canvas_bubble, len(data), i, "blue", max_data, j
+                canvas_bubble,
+                len(data),
+                i,
+                "blue",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
             )  # Other elements
 
     window.update()  # Update the window to reflect changes
-    return bubbleSortStep(
-        data, index, number_of_comparisons, number_of_swaps
-    )  # Perform a bubble sort step
-
-
-def drawRectangle(
-    canvas, number_of_rects: int, position: int, color, max_data: int, cur_data: int
-) -> None:
-    """
-    Draw a single rectangle on the canvas.
-
-    Args:
-        canvas: The canvas where the rectangle will be drawn.
-        number_of_rects (int): The total number of rectangles to be drawn.
-        position (int): The position of the current rectangle.
-        color: The color of the rectangle.
-        max_data (int): The maximum value in the data list.
-        cur_data (int): The current value of the element being drawn.
-
-    Returns:
-        None
-    """
-    rect_width = width / number_of_rects  # Calculate the width of each rectangle
-    height_scaling = height / max_data  # Calculate the height scaling factor
-    canvas.create_rectangle(
-        floor((position) * rect_width),  # x-coordinate of the top-left corner
-        floor(400 - height_scaling * cur_data),  # y-coordinate of the top-left corner
-        floor((position + 1) * rect_width),  # x-coordinate of the bottom-right corner
-        400,  # y-coordinate of the bottom-right corner
-        fill=color,  # fill color of the rectangle
-    )
+    return ret

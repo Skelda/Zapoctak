@@ -142,6 +142,13 @@ class TestSortingAlgorithms(unittest.TestCase):
         bubble_loop(data, master)
         self.assertEqual(data, [5] * 10)
 
+    def test_bubble_sort_with_negative_numbers(self):
+        from run_normal import bubble_loop
+
+        data = [9, -8, 7, -6, 5, -4, 3, -2, 1]
+        bubble_loop(data, master)
+        self.assertEqual(data, [-8, -6, -4, -2, 1, 3, 5, 7, 9])
+
     def test_selection_sort_with_data(self):
         from run_normal import selection_loop
 
@@ -170,6 +177,13 @@ class TestSortingAlgorithms(unittest.TestCase):
         selection_loop(data, master)
         self.assertEqual(data, [5] * 10)
 
+    def test_selection_sort_with_negative_numbers(self):
+        from run_normal import selection_loop
+
+        data = [9, -8, 7, -6, 5, -4, 3, -2, 1]
+        selection_loop(data, master)
+        self.assertEqual(data, [-8, -6, -4, -2, 1, 3, 5, 7, 9])
+
     def test_insertion_sort_with_data(self):
         from run_normal import insertion_loop
 
@@ -197,6 +211,13 @@ class TestSortingAlgorithms(unittest.TestCase):
         data = [5] * 10
         insertion_loop(data, master)
         self.assertEqual(data, [5] * 10)
+
+    def test_insertion_sort_with_negative_numbers(self):
+        from run_normal import insertion_loop
+
+        data = [9, -8, 7, -6, 5, -4, 3, -2, 1]
+        insertion_loop(data, master)
+        self.assertEqual(data, [-8, -6, -4, -2, 1, 3, 5, 7, 9])
 
 
 def run_tests():  # Run the unittests

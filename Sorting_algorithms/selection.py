@@ -1,5 +1,5 @@
 import tkinter as tk
-from math import floor
+from Sorting_algorithms.drawRect import drawRectangle
 
 
 def selectionSortStep(
@@ -73,7 +73,14 @@ def drawSelection(
         tuple: Updated number of comparisons, minimum index, and number of swaps.
     """
     global width, height  # Define global variables for width and height
-
+    ret = selectionSortStep(
+        data,
+        index,
+        number_of_comparisons,
+        minimum_index,
+        first_element_index,
+        number_of_swaps,
+    )  # Perform one step of selection sort
     window.update_idletasks()  # Update the window to get the latest dimensions
 
     # Calculate the width and height for the canvas
@@ -84,7 +91,8 @@ def drawSelection(
     canvas_selection = tk.Canvas(window, width=width, height=height)
     canvas_selection.place(x=width + 1, y=26)  # Place the canvas in the window
 
-    max_data = max(data)  # Get the maximum value in the data list for scaling purposes
+    max_data = max(data)  # Get the maximum value in the data list
+    min_data = min(data)  # Get the minimum value in the data list
 
     # Display the number of comparisons on the canvas
     tk.Label(
@@ -105,53 +113,58 @@ def drawSelection(
     for i, j in enumerate(data):
         if i == index:
             # Highlight the current index in green
-            drawRectangle(canvas_selection, len(data), i, "green", max_data, j)
+            drawRectangle(
+                canvas_selection,
+                len(data),
+                i,
+                "green",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
+            )
         elif i == minimum_index:
             # Highlight the current minimum index in red
-            drawRectangle(canvas_selection, len(data), i, "red", max_data, j)
+            drawRectangle(
+                canvas_selection,
+                len(data),
+                i,
+                "red",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
+            )
         elif i == first_element_index:
             # Highlight the first element index in purple
-            drawRectangle(canvas_selection, len(data), i, "purple", max_data, j)
+            drawRectangle(
+                canvas_selection,
+                len(data),
+                i,
+                "purple",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
+            )
         else:
             # Draw the rest of the elements in blue
-            drawRectangle(canvas_selection, len(data), i, "blue", max_data, j)
+            drawRectangle(
+                canvas_selection,
+                len(data),
+                i,
+                "blue",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
+            )
 
     window.update()  # Update the window to reflect the changes
 
     # Perform one step of the selection sort and return the updated values
-    return selectionSortStep(
-        data,
-        index,
-        number_of_comparisons,
-        minimum_index,
-        first_element_index,
-        number_of_swaps,
-    )
-
-
-def drawRectangle(
-    canvas, number_of_rects: int, position: int, color, max_data: int, cur_data: int
-) -> None:
-    """
-    Draw a rectangle representing an element in the list.
-
-    Args:
-        canvas (tk.Canvas): The canvas where the rectangle will be drawn.
-        number_of_rects (int): The total number of rectangles to be drawn.
-        position (int): The position of the current rectangle.
-        color (str): The color of the rectangle.
-        max_data (int): The maximum value in the data list.
-        cur_data (int): The current value of the element being drawn.
-    """
-    rect_width = width / number_of_rects  # Calculate the width of each rectangle
-
-    height_scaling = height / max_data  # Calculate the height scaling factor
-
-    # Draw the rectangle on the canvas with the specified position, size, and color
-    canvas.create_rectangle(
-        floor((position) * rect_width),  # x-coordinate of the top-left corner
-        floor(400 - height_scaling * cur_data),  # y-coordinate of the top-left corner
-        floor((position + 1) * rect_width),  # x-coordinate of the bottom-right corner
-        400,  # y-coordinate of the bottom-right corner
-        fill=color,  # fill color of the rectangle
-    )
+    return ret

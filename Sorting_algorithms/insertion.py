@@ -1,5 +1,5 @@
 import tkinter as tk
-from math import floor
+from Sorting_algorithms.drawRect import drawRectangle
 
 
 def insertionSortStep(
@@ -53,6 +53,9 @@ def drawInsertion(
         tuple: Updated number of comparisons, number of swaps, and should_break flag.
     """
     global width, height
+    ret = insertionSortStep(
+        data, index, number_of_comparisons, number_of_swaps
+    )  # Perform one step of insertion sort
     window.update_idletasks()  # Update the window to get the latest dimensions
     width = window.winfo_width() // 2 - 25  # Calculate the canvas width
     height = window.winfo_height() // 2 - 25  # Calculate the canvas height
@@ -61,6 +64,8 @@ def drawInsertion(
     )  # Create a new canvas
     canvas_insertion.place(x=0, y=height + 26)  # Place the canvas in the window
     max_data = max(data)  # Find the maximum value in the data list
+    min_data = min(data)  # Get the minimum value in the data list
+
     tk.Label(
         canvas_insertion, text=f"Number of comparisons: {number_of_comparisons}"
     ).place(
@@ -75,43 +80,40 @@ def drawInsertion(
     for i, j in enumerate(data):  # Iterate over the data list
         if i == index:
             drawRectangle(
-                canvas_insertion, len(data), i, "green", max_data, j
+                canvas_insertion,
+                len(data),
+                i,
+                "green",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
             )  # Highlight the current index in green
         elif i == index + 1:
             drawRectangle(
-                canvas_insertion, len(data), i, "red", max_data, j
+                canvas_insertion,
+                len(data),
+                i,
+                "red",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
             )  # Highlight the next index in red
         else:
             drawRectangle(
-                canvas_insertion, len(data), i, "blue", max_data, j
+                canvas_insertion,
+                len(data),
+                i,
+                "blue",
+                max_data,
+                min_data,
+                j,
+                width,
+                height,
             )  # Draw other elements in blue
 
     window.update()  # Update the window to reflect changes
-    return insertionSortStep(
-        data, index, number_of_comparisons, number_of_swaps
-    )  # Perform one step of insertion sort
-
-
-def drawRectangle(
-    canvas, number_of_rects: int, position: int, color, max_data: int, cur_data: int
-) -> None:
-    """
-    Draw a rectangle representing an element in the list.
-
-    Args:
-        canvas (tk.Canvas): The canvas where the rectangle will be drawn.
-        number_of_rects (int): The total number of rectangles to be drawn.
-        position (int): The position of the current rectangle.
-        color (str): The color of the rectangle.
-        max_data (int): The maximum value in the data list.
-        cur_data (int): The current value of the element being drawn.
-    """
-    rect_width = width / number_of_rects  # Calculate the width of each rectangle
-    height_scaling = height / max_data  # Calculate the height scaling factor
-    canvas.create_rectangle(
-        floor((position) * rect_width),  # x-coordinate of the top-left corner
-        floor(400 - height_scaling * cur_data),  # y-coordinate of the top-left corner
-        floor((position + 1) * rect_width),  # x-coordinate of the bottom-right corner
-        400,  # y-coordinate of the bottom-right corner
-        fill=color,  # fill color of the rectangle
-    )
+    return ret
