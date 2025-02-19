@@ -73,6 +73,9 @@ This project provides a visual representation of different sorting algorithms. I
             - `insertionSortStep()`: Performs one step of the Insertion Sort algorithm.
             - `drawInsertion()`: Draws the Insertion Sort visualization.
             - `drawRectangle()`: Draws a rectangle representing an element in the list.
+    - [drawRect.py](https://github.com/Skelda/Zapoctak/blob/main/Sorting_algorithms/drawRect.py): Contains the function to draw a rectangle representing an element in the list.
+        - **Functions**:
+            - `drawRectangle()`: Draws a rectangle representing an element in the list.
     - [__init__.py](https://github.com/Skelda/Zapoctak/blob/main/Sorting_algorithms/__init__.py): Initializes the Sorting_algorithms module.
 
 - [run_normal.py](https://github.com/Skelda/Zapoctak/blob/main/run_normal.py): Script to run the sorting visualizations synchronously.
@@ -97,6 +100,27 @@ This project provides a visual representation of different sorting algorithms. I
         - `insertionSort()`: Sorts the data using the Insertion Sort algorithm.
         - `sorting_times()`: Measures the sorting times for different algorithms.
         - `plot_sorting_times()`: Plots the sorting times for different algorithms.
+
+
+- [test_sorting_algorithms.py](https://github.com/Skelda/Zapoctak/blob/main/test_sorting_algorithms.py): Contains unit tests for the sorting algorithms.
+    - **Classes**:
+        - [TestSortingAlgorithms](http://_vscodecontentref_/29): Unit test class for testing the sorting algorithms.
+            - **Methods**:
+                - `test_bubble_sort_with_data()`: Tests Bubble Sort with a list of data.
+                - `test_bubble_sort_without_data()`: Tests Bubble Sort with an empty list.
+                - `test_bubble_sort_single_element()`: Tests Bubble Sort with a single element.
+                - `test_bubble_sort_duplicate_elements()`: Tests Bubble Sort with duplicate elements.
+                - `test_bubble_sort_with_negative_numbers()`: Tests Bubble Sort with negative numbers.
+                - `test_selection_sort_with_data()`: Tests Selection Sort with a list of data.
+                - `test_selection_sort_without_data()`: Tests Selection Sort with an empty list.
+                - `test_selection_sort_single_element()`: Tests Selection Sort with a single element.
+                - `test_selection_sort_duplicate_elements()`: Tests Selection Sort with duplicate elements.
+                - `test_selection_sort_with_negative_numbers()`: Tests Selection Sort with negative numbers.
+                - `test_insertion_sort_with_data()`: Tests Insertion Sort with a list of data.
+                - `test_insertion_sort_without_data()`: Tests Insertion Sort with an empty list.
+                - `test_insertion_sort_single_element()`: Tests Insertion Sort with a single element.
+                - `test_insertion_sort_duplicate_elements()`: Tests Insertion Sort with duplicate elements.
+                - `test_insertion_sort_with_negative_numbers()`: Tests Insertion Sort with negative numbers.
 
 ## License
 
