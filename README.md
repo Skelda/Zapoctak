@@ -104,7 +104,7 @@ This project provides a visual representation of different sorting algorithms. I
 
 - [test_sorting_algorithms.py](https://github.com/Skelda/Zapoctak/blob/main/test_sorting_algorithms.py): Contains unit tests for the sorting algorithms.
     - **Classes**:
-        - [TestSortingAlgorithms](http://_vscodecontentref_/29): Unit test class for testing the sorting algorithms.
+        - [TestSortingAlgorithms](https://github.com/Skelda/Zapoctak/blob/main/test_sorting_algorithms.py): Unit test class for testing the sorting algorithms.
             - **Methods**:
                 - `test_bubble_sort_with_data()`: Tests Bubble Sort with a list of data.
                 - `test_bubble_sort_without_data()`: Tests Bubble Sort with an empty list.
